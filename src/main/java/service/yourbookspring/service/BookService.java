@@ -6,6 +6,8 @@ import service.yourbookspring.dto.BookDTO;
 import service.yourbookspring.entity.Book;
 import service.yourbookspring.repository.BookRepository;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class BookService {
@@ -21,4 +23,7 @@ public class BookService {
         return bookRepository.save(book);
     }
 
+    public List<Book> readAll() {
+        return bookRepository.findAll();
+    }
 }

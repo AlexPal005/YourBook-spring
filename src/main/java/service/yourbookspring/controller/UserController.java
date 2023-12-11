@@ -13,9 +13,11 @@ import service.yourbookspring.service.UserService;
 public class UserController {
 
     private final UserService userService;
+    @CrossOrigin
 
     @PostMapping(value = "/user")
-    public ResponseEntity<User> create(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<User> create(@RequestBody UserDTO userDTO) throws Exception {
+        System.out.println(userDTO);
         return new ResponseEntity<>(userService.create(userDTO), HttpStatus.OK);
     }
 
