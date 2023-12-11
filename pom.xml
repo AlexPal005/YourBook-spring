@@ -78,13 +78,19 @@
             <artifactId>spring-webmvc</artifactId>
             <version>6.1.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.mindrot.bcrypt/bcrypt -->
-        <dependency>
-            <groupId>org.mindrot.bcrypt</groupId>
-            <artifactId>bcrypt</artifactId>
-            <version>0.3</version>
-        </dependency>
 
+        <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.12.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
 
     </dependencies>
 

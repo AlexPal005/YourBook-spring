@@ -1,7 +1,6 @@
 package service.yourbookspring.service;
 
 import lombok.AllArgsConstructor;
-import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,7 @@ public class UserService {
 
     public User create(UserDTO userDTO) throws Exception {
         // Check if the username already exists
-        if (!userRepository.findByEmail(userDTO.getEmail()).isEmpty()) {
+        if (userRepository.findByEmail(userDTO.getEmail()) != null) {
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT, "Пошта вже використовується!");
         }
