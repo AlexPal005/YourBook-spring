@@ -39,5 +39,4 @@ public class UserController {
         String token = jwt.encode(content);
         return ResponseEntity.ok(token);
     }
-
 }
