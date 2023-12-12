@@ -8,6 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 import service.yourbookspring.entity.User;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -17,7 +18,5 @@ public class OrderDTO {
     private Double totalSum;
     private String status;
     private User user;
-    private Long userId;
-
-
+    private List<Long> booksId;
 }

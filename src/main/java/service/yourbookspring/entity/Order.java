@@ -1,5 +1,6 @@
 package service.yourbookspring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,12 +33,7 @@ public class Order {
     @JoinColumn(name="user_id")
     private User user;
 
-//    @ManyToMany(cascade = { CascadeType.ALL })
-//    @JoinTable(
-//            name = "_user",
-//            joinColumns = { @JoinColumn(name = "id") },
-//            inverseJoinColumns = { @JoinColumn(name = "id") }
-//    )
-//    Set<Book> books = new HashSet<>();
-
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private OrderDetails orderDetails;
 }

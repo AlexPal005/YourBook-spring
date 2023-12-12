@@ -15,19 +15,19 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "book")
-public class Book {
+@Table(name = "order_details")
+public class OrderDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
-    private String title;
-    private String description;
-    private Double price;
-    private byte[] picture;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
 
-    @OneToMany
-    @JoinColumn(name = "book_id")
-    private Set<OrderDetails> orderDetails = new HashSet<>();
+    @OneToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+    @OneToMany(mappedBy = "id")
+    private Set<Book> books = new HashSet<>();
+
 
 }

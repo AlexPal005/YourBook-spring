@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+
 import javax.crypto.SecretKey;
+
 import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JWT {
     private final SecretKey key;
+
     public JWT(@Value("${app.jwt.secret}") String secret) {
         key = Keys.hmacShaKeyFor(secret.getBytes());
     }
