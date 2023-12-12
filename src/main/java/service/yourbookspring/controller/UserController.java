@@ -48,7 +48,7 @@ public class UserController {
         return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
     }
 
-    @PutMapping("/user/{id}")
+    @PutMapping(value = "/user/update/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody UserDTO userDTO) {
         User user = repository.findById(id).orElseThrow();
         user.setAddress(userDTO.getAddress());

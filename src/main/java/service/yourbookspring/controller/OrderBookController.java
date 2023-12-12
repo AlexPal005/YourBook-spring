@@ -18,7 +18,6 @@ public class OrderBookController {
     @PostMapping(value = "/order/create")
     public ResponseEntity<Order> create(@RequestBody OrderDTO orderDTO,
                                         @RequestHeader(name="Authorization") String token){
-        System.out.println(orderDTO);
         return new ResponseEntity<>(orderService.create(orderDTO, token), HttpStatus.OK);
     }
 }

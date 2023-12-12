@@ -26,6 +26,7 @@ public class User {
     private String email;
     private String password;
     private String address;
+    private String role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore

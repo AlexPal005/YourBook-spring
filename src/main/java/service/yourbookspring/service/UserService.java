@@ -30,6 +30,7 @@ public class UserService {
                 .email(userDTO.getEmail())
                 .password(userDTO.getPassword())
                 .address(userDTO.getAddress())
+                .role("USER")
                 .build();
         return userRepository.save(user);
     }
