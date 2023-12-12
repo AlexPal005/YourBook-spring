@@ -12,6 +12,8 @@ import service.yourbookspring.service.UserService;
 import service.yourbookspring.utilities.JWT;
 import service.yourbookspring.utilities.JWTContent;
 
+import java.util.Optional;
+
 
 @RestController
 @AllArgsConstructor
@@ -38,5 +40,19 @@ public class UserController {
         JWTContent content = new JWTContent(userId);
         String token = jwt.encode(content);
         return ResponseEntity.ok(token);
+    }
+
+    @GetMapping(value = "/user/{id}")
+    public ResponseEntity<?> get(@PathVariable Long id) {
+        Optional<User> user = repository.findById(id);
+        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
+    }
+
+    @PutMapping("/user/{id}")
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody UserDTO userDTO) {
+        User user = repository.findById(id).orElseThrow();
+        user.setAddress(userDTO.getAddress());
+        User saved = repository.save(user);
+        return ResponseEntity.ok(saved);
     }
 }

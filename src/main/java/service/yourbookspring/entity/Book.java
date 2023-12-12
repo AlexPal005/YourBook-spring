@@ -19,15 +19,11 @@ import java.util.Set;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
     private Double price;
     private byte[] picture;
-
-    @OneToMany
-    @JoinColumn(name = "book_id")
-    private Set<OrderDetails> orderDetails = new HashSet<>();
 
 }

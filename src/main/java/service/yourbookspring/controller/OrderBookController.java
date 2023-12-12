@@ -11,15 +11,14 @@ import service.yourbookspring.dto.OrderDTO;
 import service.yourbookspring.entity.Order;
 import service.yourbookspring.service.OrderService;
 
-
 @RestController
 @AllArgsConstructor
-public class OrderController {
+public class OrderBookController {
     private final OrderService orderService;
-
-//    @PostMapping(value = "/order/create")
-//    public ResponseEntity<Order> create(@RequestBody OrderDTO orderDTO,
-//                                        @RequestHeader(name="Authorization") String token){
-//        return new ResponseEntity<>(orderService.create(orderDTO, token), HttpStatus.OK);
-//    }
+    @PostMapping(value = "/order/create")
+    public ResponseEntity<Order> create(@RequestBody OrderDTO orderDTO,
+                                        @RequestHeader(name="Authorization") String token){
+        System.out.println(orderDTO);
+        return new ResponseEntity<>(orderService.create(orderDTO, token), HttpStatus.OK);
+    }
 }

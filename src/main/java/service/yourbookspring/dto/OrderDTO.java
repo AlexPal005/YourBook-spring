@@ -5,10 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
+import service.yourbookspring.entity.Book;
 import service.yourbookspring.entity.User;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -19,4 +22,5 @@ public class OrderDTO {
     private String status;
     private User user;
     private List<Long> booksId;
+    private Set<Book> books;
 }

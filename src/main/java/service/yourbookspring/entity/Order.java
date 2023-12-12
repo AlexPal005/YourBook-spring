@@ -30,10 +30,14 @@ public class Order {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private OrderDetails orderDetails;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "order_details",
+            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"))
+    private Set<Book> books = new HashSet<>();
+
 }
