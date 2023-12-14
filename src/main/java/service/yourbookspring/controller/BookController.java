@@ -5,7 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import service.yourbookspring.dto.BookDTO;
+import service.yourbookspring.dto.UserDTO;
 import service.yourbookspring.entity.Book;
+import service.yourbookspring.entity.User;
 import service.yourbookspring.service.BookService;
 
 import java.util.List;
@@ -23,5 +25,11 @@ public class BookController {
     @GetMapping("/book/getAll")
     public ResponseEntity<List<Book>> readAll() {
         return new ResponseEntity<>(bookService.readAll(), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/book/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        bookService.deleteBook(id);
+        return ResponseEntity.ok(id);
     }
 }

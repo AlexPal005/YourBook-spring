@@ -51,7 +51,16 @@ public class UserController {
     @PutMapping(value = "/user/update/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody UserDTO userDTO) {
         User user = repository.findById(id).orElseThrow();
+        System.out.println(userDTO);
         user.setAddress(userDTO.getAddress());
+        User saved = repository.save(user);
+        return ResponseEntity.ok(saved);
+    }
+
+    @PutMapping(value = "/user/updateRole/{email}")
+    public ResponseEntity<?> updateRole(@PathVariable String email, @RequestBody UserDTO userDTO) {
+        User user = repository.findByEmail(email);
+        user.setRole(userDTO.getRole());
         User saved = repository.save(user);
         return ResponseEntity.ok(saved);
     }

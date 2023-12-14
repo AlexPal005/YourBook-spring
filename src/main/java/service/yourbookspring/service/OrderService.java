@@ -47,4 +47,12 @@ public class OrderService {
                 .build();
         return orderRepository.save(order);
     }
+
+    public List<Order> readAll() {
+        return orderRepository.findAll();
+    }
+
+    public void deleteOrder(Long id) {
+        orderRepository.deleteById(id);
+    }
 }

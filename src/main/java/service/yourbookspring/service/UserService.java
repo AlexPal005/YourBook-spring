@@ -31,6 +31,7 @@ public class UserService {
                 .password(userDTO.getPassword())
                 .address(userDTO.getAddress())
                 .role("USER")
+                .number(userDTO.getNumber())
                 .build();
         return userRepository.save(user);
     }
